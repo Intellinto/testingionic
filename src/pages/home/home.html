@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Hej {{userName}}</h2>
+  <div *ngIf="imageSource as url" class="container">
+    <p>
+      Her kan du se billedet du har uploadet
+    </p>
+    <img [src]='url'>
+  </div>
+  <div *ngIf="!imageSource" class="container">
+    <p>
+      Du har endnu ikke uploadet et billede
+    </p>
+  </div>
+  <div padding class="button-container">
+    <button ion-button block class="button" (click)="signOut()">sign out</button>
+  </div>
+</ion-content>

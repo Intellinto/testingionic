@@ -1,0 +1,14 @@
+page-home {
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .button {
+        width: 70%;
+    }
+    .button-container {
+        display: flex;
+        justify-content: center;
+    }
+}
