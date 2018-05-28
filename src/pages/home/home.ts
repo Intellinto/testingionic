@@ -15,20 +15,25 @@ export class HomePage implements AfterViewInit {
   public uid: string;
   constructor(public navCtrl: NavController, private afAuth: AngularFireAuth, private afs: AngularFireStorage) {
     this.uid = localStorage.uid;
+  }
+  public ngAfterViewInit(): void {
+    this.userName = localStorage.userName;
+  }
+
+  public ionViewWillEnter(): void {
     const filePath = `${this.uid}.jpg`;
+    this.imageSource = undefined;
     this.afs.ref(filePath).getDownloadURL().subscribe((l => {
       if (l !== undefined) {
         this.imageSource = l;
       }
     }));
   }
-  public ngAfterViewInit(): void {
-    this.userName = localStorage.userName;
-  }
+
   public signOut(): void {
     this.afAuth.auth.signOut()
       .then((s) => {
-        console.log(s)
+        console.log(s)        
         this.navCtrl.insert(0, LoginPage).then(() => {
           this.navCtrl.popToRoot();
         });

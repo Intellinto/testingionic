@@ -12,13 +12,13 @@ export class LoginPage {
 
     constructor(public navCtrl: NavController, private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.afAuth.authState.subscribe((e) => {
-            if(e) {
+            if (e) {
 
                 localStorage.setItem('uid', e.uid);
                 this.afs.collection('users').doc(e.uid).valueChanges().subscribe((s: any) => {
                     localStorage.setItem('userName', s.name);
                     this.navCtrl.push(TabsPage);
-                });            
+                });
             }
         });
     }

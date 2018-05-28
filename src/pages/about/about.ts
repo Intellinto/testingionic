@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { ImagePicker, ImagePickerOptions } from '@ionic-native/image-picker';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 
 
@@ -15,7 +14,7 @@ export class AboutPage {
   public image: string;
   public uid: string;
 
-  constructor(public navCtrl: NavController, private camera: Camera, private pickr: ImagePicker, private afs: AngularFireStorage) {
+  constructor(public navCtrl: NavController, private camera: Camera, private afs: AngularFireStorage) {
     this.uid = localStorage.uid;
     this.image = '../../assets/imgs/no-image.svg'
   }
